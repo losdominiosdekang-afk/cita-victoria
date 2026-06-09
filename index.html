@@ -12,7 +12,6 @@ body{
     color:#1b2a41;
     margin:0;
     height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -25,12 +24,12 @@ body{
 }
 
 button{
-    padding:15px 30px;
+    padding:15px 25px;
     font-size:18px;
     border:none;
     border-radius:10px;
     cursor:pointer;
-    margin-top:20px;
+    margin:10px;
     background:white;
     color:#1b2a41;
     transition:0.3s;
@@ -51,57 +50,59 @@ button:hover{
 <div class="card">
 
     <!-- PANTALLA 1 -->
-    <div id="pantalla1">
+    <div id="p1">
         <h1>❤️ Gracias por la cita de hoy ❤️</h1>
-        <p>Tengo algo para ti...</p>
+        <p>Tengo una pregunta para ti...</p>
 
-        <button onclick="siguiente()">
-            Toca aquí
+        <button onclick="showQuestion()">
+            Empezar
         </button>
     </div>
 
-    <!-- PANTALLA 2 -->
-    <div id="pantalla2" class="hidden">
-        <h2>💖</h2>
-        <p>
-            No es una sorpresa grande...  
-            pero sí es importante.
-        </p>
+    <!-- PANTALLA 2: PREGUNTA -->
+    <div id="p2" class="hidden">
+        <h2>💭 Pregunta</h2>
+        <p>¿Dónde prefieres perderte conmigo?</p>
 
-        <p>
-            Gracias por este día contigo.
-            Me quedo con cada momento.
-        </p>
-
-        <button onclick="final()">
-            Continuar
+        <button onclick="wrongAnswer()">
+            Cartagena
         </button>
+
+        <button onclick="correctAnswer()">
+            Murcia
+        </button>
+
+        <p id="msg"></p>
     </div>
 
-    <!-- PANTALLA FINAL -->
+    <!-- PANTALLA 3: FINAL -->
     <div id="final" class="hidden">
-        <h2>❤️</h2>
+        <h2>💙</h2>
         <p>
-            Y esto solo es el principio...
-        </p>
-
-        <p>
-            Gracias por estar en mi vida.
+            Buena elección...  
+            esto solo acaba de empezar.
         </p>
     </div>
 
 </div>
 
 <script>
-function siguiente(){
-    document.getElementById("pantalla1").classList.add("hidden");
-    document.getElementById("pantalla2").classList.remove("hidden");
+
+function showQuestion(){
+    document.getElementById("p1").classList.add("hidden");
+    document.getElementById("p2").classList.remove("hidden");
 }
 
-function final(){
-    document.getElementById("pantalla2").classList.add("hidden");
+function correctAnswer(){
+    document.getElementById("p2").classList.add("hidden");
     document.getElementById("final").classList.remove("hidden");
 }
+
+function wrongAnswer(){
+    document.getElementById("msg").innerText =
+    "Hmm… no estoy seguro de esa respuesta 😏 prueba otra";
+}
+
 </script>
 
 </body>
