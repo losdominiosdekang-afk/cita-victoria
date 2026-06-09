@@ -92,8 +92,8 @@ button:hover{
 <!-- INICIO -->
 <div id="inicio">
 <h1>❤️ Para ti ❤️</h1>
-<p> He preparado un pequeño juego. </p>
-<p> Cada prueba superada revelará una parte de mi número. </p>
+<p> He preparado un pequeño juego que me parece más original y divertido. </p>
+<p> Cada prueba superada revelará una dígito de mi número de teléfono. </p>
 <button onclick="irPregunta1()"> Empezar </button>
 </div>
 
@@ -101,17 +101,17 @@ button:hover{
 <div id="pregunta1" class="hidden">
 <h2>🎂 Primera prueba</h2>
 <p> ¿En qué mes cumplo años? </p>
-<button onclick="incorrecta(this,'msg1')">Enero</button>
-<button onclick="incorrecta(this,'msg1')">Marzo</button>
-<button onclick="correcta1(this)">Junio</button>
-<button onclick="incorrecta(this,'msg1')">Septiembre</button>
+<button onclick="incorrecta(this,'msg1')">Enero (1)</button>
+<button onclick="incorrecta(this,'msg1')">Marzo (3)</button>
+<button onclick="correcta1(this)">Junio (6)</button>
+<button onclick="incorrecta(this,'msg1')">Septiembre (9)</button>
 <p id="msg1"></p>
 </div>
 
 <!-- PREGUNTA 2 -->
 <div id="pregunta2" class="hidden">
     <h2>⭐ Segunda prueba</h2>
-    <p>¿Cuántas estrellas forman el Triángulo de Verano?</p>
+    <p>¿Cuántas estrellas principales forman el Triángulo de Verano?</p>
 
     <img src="https://raw.githubusercontent.com/losdominiosdekang-afk/cita-victoria/refs/heads/main/triangulo%20de%20verano.jpg"
          alt="Triángulo de Verano"
@@ -133,7 +133,7 @@ button:hover{
 
     <img src="https://raw.githubusercontent.com/losdominiosdekang-afk/cita-victoria/refs/heads/main/petra-jordania.jpg"
      alt="Petra"
-     style="width:90%; border-radius:15px; margin:20px 0;">
+     style="width:70%; border-radius:15px; margin:20px 0;">
 
     <p>Pero… ¿cuántas son las maravillas del mundo?</p>
 
@@ -159,6 +159,22 @@ button:hover{
     <button onclick="incorrecta(this,'msg4')">9</button>
 
     <p id="msg4"></p>
+</div>
+
+    <!-- PREGUNTA 5 -->
+<div id="pregunta5" class="hidden">
+    <h2>📚 Quinta prueba</h2>
+    <p>
+        Profe, profe, si pasaras lista en clase por probabilidad,
+        ¿en qué puesto me encontrarías teniendo en cuenta que me apellido Alarcón?
+    </p>
+
+    <button onclick="correcta5(this)">En el 1º</button>
+    <button onclick="incorrecta(this,'msg5')">Sobre la mitad</button>
+    <button onclick="incorrecta(this,'msg5')">De los últimos</button>
+    <button onclick="incorrecta(this,'msg5')">Depende del día</button>
+
+    <p id="msg5"></p>
 </div>
 
     
@@ -228,12 +244,22 @@ function correcta3(btn){
     },400);
 }
 
-    function correcta4(btn){
+function correcta4(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("6378 XX XXX");
+    actualizarTelefono("6378X XXX");
     setTimeout(()=>{
         document.getElementById("pregunta4").classList.add("hidden");
+        document.getElementById("pregunta5").classList.remove("hidden");
+    },400);
+}
+
+    function correcta5(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("63781 XXX");
+    setTimeout(()=>{
+        document.getElementById("pregunta5").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
