@@ -130,6 +130,14 @@ button:hover{
 </div>
 
 <script>
+function lanzarConfeti() {
+    confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
+
 function irPregunta1(){
     document.getElementById("inicio").classList.add("hidden");
     document.getElementById("pregunta1").classList.remove("hidden");
@@ -145,6 +153,7 @@ function incorrecta(btn,msgId){
 
 function correcta1(btn){
     btn.classList.add("pop");
+    lanzarConfeti();
     setTimeout(()=>{
         document.getElementById("pregunta1").classList.add("hidden");
         document.getElementById("pregunta2").classList.remove("hidden");
@@ -153,6 +162,7 @@ function correcta1(btn){
 
 function correcta2(btn){
     btn.classList.add("pop");
+    lanzarConfeti();
     setTimeout(()=>{
         document.getElementById("pregunta2").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
