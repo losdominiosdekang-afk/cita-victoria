@@ -16,23 +16,31 @@ body{
     justify-content:center;
     align-items:center;
     text-align:center;
-    font-size:20px;
 }
 
 .card{
-    max-width:650px;
+    max-width:700px;
     padding:30px;
 }
 
-h1{ font-size:42px; }
-h2{ font-size:34px; }
-p{ font-size:22px; line-height:1.5; }
+h1{
+    font-size:42px;
+}
+
+h2{
+    font-size:34px;
+}
+
+p{
+    font-size:24px;
+    line-height:1.5;
+}
 
 button{
     padding:15px 25px;
-    font-size:20px;
+    font-size:22px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
     margin:10px;
     background:white;
@@ -41,33 +49,45 @@ button{
 }
 
 button:hover{
-    transform: scale(1.05);
-}
-
-/* Animaciones */
-.shake {
-    animation: shake 0.4s;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-}
-
-.pop {
-    animation: pop 0.4s ease;
-}
-
-@keyframes pop {
-    0% { transform: scale(0.8); opacity:0; }
-    100% { transform: scale(1); opacity:1; }
+    transform:scale(1.05);
 }
 
 .hidden{
     display:none;
+}
+
+.telefono{
+    margin-top:25px;
+    font-size:32px;
+    font-weight:bold;
+    color:#355c7d;
+}
+
+.shake{
+    animation:shake .4s;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-10px);}
+    50%{transform:translateX(10px);}
+    75%{transform:translateX(-10px);}
+    100%{transform:translateX(0);}
+}
+
+.pop{
+    animation:pop .4s ease;
+}
+
+@keyframes pop{
+    0%{
+        transform:scale(.8);
+        opacity:0;
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
 }
 </style>
 </head>
@@ -76,81 +96,142 @@ button:hover{
 
 <div class="card">
 
-    <!-- PANTALLA 1 -->
-    <div id="p1">
+    <!-- INICIO -->
+    <div id="inicio">
         <h1>❤️ Para ti ❤️</h1>
-        <p>He preparado un pequeño juego...</p>
-        <button onclick="start()">Empezar</button>
+
+        <p>
+            He preparado un pequeño juego.
+        </p>
+
+        <p>
+            Cada prueba superada revelará una parte de mi número.
+        </p>
+
+        <div class="telefono">
+            XXX XXX XXX
+        </div>
+
+        <button onclick="irPregunta1()">
+            Empezar
+        </button>
     </div>
 
-    <!-- PANTALLA 2: PREGUNTA -->
-    <div id="p2" class="hidden">
+    <!-- PREGUNTA 1 -->
+    <div id="pregunta1" class="hidden">
+
         <h2>🎂 Primera prueba</h2>
-        <p>¿En qué mes cumplo años?</p>
 
-        <button onclick="wrong(this)">Enero</button>
-        <button onclick="wrong(this)">Marzo</button>
-        <button onclick="correct(this)">Junio</button>
-        <button onclick="wrong(this)">Septiembre</button>
+        <p>
+            ¿En qué mes cumplo años?
+        </p>
 
-        <p id="msg"></p>
+        <div class="telefono">
+            XXX XXX XXX
+        </div>
+
+        <button onclick="incorrecta(this,'msg1')">Enero</button>
+        <button onclick="incorrecta(this,'msg1')">Marzo</button>
+        <button onclick="correcta1(this)">Junio</button>
+        <button onclick="incorrecta(this,'msg1')">Septiembre</button>
+
+        <p id="msg1"></p>
+
     </div>
 
-    <!-- PANTALLA 3 -->
-    <div id="p3" class="hidden">
-        <h2 class="pop">💙 ¡Correcto!</h2>
-        <p>Vas bien… muy bien 😏</p>
+    <!-- PREGUNTA 2 -->
+    <div id="pregunta2" class="hidden">
 
-        <button onclick="final()">Continuar</button>
+        <h2>⭐ Segunda prueba</h2>
+
+        <p>
+            ¿Cuántas estrellas forman el Triángulo de Verano?
+        </p>
+
+        <div class="telefono">
+            6XX XXX XXX
+        </div>
+
+        <button onclick="incorrecta(this,'msg2')">2</button>
+        <button onclick="correcta2(this)">3</button>
+        <button onclick="incorrecta(this,'msg2')">4</button>
+        <button onclick="incorrecta(this,'msg2')">5</button>
+
+        <p id="msg2"></p>
+
     </div>
 
     <!-- FINAL -->
     <div id="final" class="hidden">
-        <h2>🎁 Premio desbloqueado</h2>
 
-        <p>Has completado la prueba.</p>
+        <h2 class="pop">🎁 Muy bien</h2>
 
-        <p>Este es mi número de teléfono:</p>
+        <p>
+            Has llegado hasta aquí.
+        </p>
 
-        <h2>📱 +34 XXX XXX XXX</h2>
+        <p>
+            Ya has descubierto una parte importante:
+        </p>
 
-        <p>Guárdalo bien 😉</p>
+        <div class="telefono">
+            67X XXX XXX
+        </div>
+
+        <p>
+            Todavía quedan algunas pruebas para descubrir el resto... 😉
+        </p>
+
     </div>
 
 </div>
 
 <script>
 
-function start(){
-    document.getElementById("p1").classList.add("hidden");
-    document.getElementById("p2").classList.remove("hidden");
+function irPregunta1(){
+
+    document.getElementById("inicio").classList.add("hidden");
+    document.getElementById("pregunta1").classList.remove("hidden");
+
 }
 
-/* ❌ respuesta incorrecta */
-function wrong(btn){
+function incorrecta(btn,msgId){
+
     btn.classList.add("shake");
 
-    document.getElementById("msg").innerText =
-    "Hmm… no es ese mes 😏";
+    document.getElementById(msgId).innerText =
+    "❌ Esa no es la respuesta correcta.";
 
-    setTimeout(() => {
+    setTimeout(()=>{
         btn.classList.remove("shake");
-    }, 400);
+    },400);
+
 }
 
-/* ✅ respuesta correcta */
-function correct(btn){
+function correcta1(btn){
+
     btn.classList.add("pop");
 
-    setTimeout(() => {
-        document.getElementById("p2").classList.add("hidden");
-        document.getElementById("p3").classList.remove("hidden");
-    }, 400);
+    setTimeout(()=>{
+
+        document.getElementById("pregunta1").classList.add("hidden");
+        document.getElementById("pregunta2").classList.remove("hidden");
+
+    },400);
+
 }
 
-function final(){
-    document.getElementById("p3").classList.add("hidden");
-    document.getElementById("final").classList.remove("hidden");
+function correcta2(btn){
+
+    btn.classList.add("pop");
+
+    setTimeout(()=>{
+
+        document.getElementById("pregunta2").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+
+    },400);
+
 }
 
 </script>
