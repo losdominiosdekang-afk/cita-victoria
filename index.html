@@ -24,18 +24,9 @@ body{
     padding:30px;
 }
 
-h1{
-    font-size:42px;
-}
-
-h2{
-    font-size:34px;
-}
-
-p{
-    font-size:22px;
-    line-height:1.5;
-}
+h1{ font-size:42px; }
+h2{ font-size:34px; }
+p{ font-size:22px; line-height:1.5; }
 
 button{
     padding:15px 25px;
@@ -53,6 +44,28 @@ button:hover{
     transform: scale(1.05);
 }
 
+/* Animaciones */
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+.pop {
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.8); opacity:0; }
+    100% { transform: scale(1); opacity:1; }
+}
+
 .hidden{
     display:none;
 }
@@ -67,27 +80,26 @@ button:hover{
     <div id="p1">
         <h1>❤️ Para ti ❤️</h1>
         <p>He preparado un pequeño juego...</p>
-        <button onclick="showQuestion()">Empezar</button>
+        <button onclick="start()">Empezar</button>
     </div>
 
-    <!-- PANTALLA 2 -->
+    <!-- PANTALLA 2: PREGUNTA -->
     <div id="p2" class="hidden">
-        <h2>💭 Primera pista</h2>
-        <p>¿Dónde te gustaría perderte conmigo?</p>
+        <h2>🎂 Primera prueba</h2>
+        <p>¿En qué mes cumplo años?</p>
 
-        <button onclick="wrong()">Cartagena</button>
-        <button onclick="correct()">Murcia</button>
+        <button onclick="wrong(this)">Enero</button>
+        <button onclick="wrong(this)">Marzo</button>
+        <button onclick="correct(this)">Junio</button>
+        <button onclick="wrong(this)">Septiembre</button>
 
         <p id="msg"></p>
     </div>
 
     <!-- PANTALLA 3 -->
     <div id="p3" class="hidden">
-        <h2>💙 Bien hecho</h2>
-        <p>
-            Has pasado la primera prueba...
-            pero ahora viene lo importante.
-        </p>
+        <h2 class="pop">💙 ¡Correcto!</h2>
+        <p>Vas bien… muy bien 😏</p>
 
         <button onclick="final()">Continuar</button>
     </div>
@@ -95,38 +107,45 @@ button:hover{
     <!-- FINAL -->
     <div id="final" class="hidden">
         <h2>🎁 Premio desbloqueado</h2>
-        <p>
-            Has llegado hasta el final del juego.
-        </p>
 
-        <p>
-            Este es mi número de teléfono:
-        </p>
+        <p>Has completado la prueba.</p>
+
+        <p>Este es mi número de teléfono:</p>
 
         <h2>📱 +34 XXX XXX XXX</h2>
 
-        <p>
-            Guárdalo... y úsalo bien 😉
-        </p>
+        <p>Guárdalo bien 😉</p>
     </div>
 
 </div>
 
 <script>
 
-function showQuestion(){
+function start(){
     document.getElementById("p1").classList.add("hidden");
     document.getElementById("p2").classList.remove("hidden");
 }
 
-function correct(){
-    document.getElementById("p2").classList.add("hidden");
-    document.getElementById("p3").classList.remove("hidden");
+/* ❌ respuesta incorrecta */
+function wrong(btn){
+    btn.classList.add("shake");
+
+    document.getElementById("msg").innerText =
+    "Hmm… no es ese mes 😏";
+
+    setTimeout(() => {
+        btn.classList.remove("shake");
+    }, 400);
 }
 
-function wrong(){
-    document.getElementById("msg").innerText =
-    "Mmm… no es esa la respuesta correcta 😏";
+/* ✅ respuesta correcta */
+function correct(btn){
+    btn.classList.add("pop");
+
+    setTimeout(() => {
+        document.getElementById("p2").classList.add("hidden");
+        document.getElementById("p3").classList.remove("hidden");
+    }, 400);
 }
 
 function final(){
