@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti ❤️</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.card{
+    max-width:600px;
+    margin:auto;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.hidden{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>❤️ Gracias por la cita de hoy ❤️</h1>
+
+<p>
+Tengo una pequeña sorpresa para ti...
+</p>
+
+<button onclick="mostrarMensaje()">
+Haz clic aquí
+</button>
+
+<div id="sorpresa" class="hidden">
+    <h2>🥰</h2>
+
+    <p>
+    Gracias por compartir este día conmigo.
+    Cada momento contigo merece ser recordado.
+    </p>
+
+    <p>
+    Y esto es solo el principio...
+    </p>
+
+    <h3>❤️</h3>
+</div>
+
+</div>
+
+<script>
+function mostrarMensaje(){
+    document.getElementById("sorpresa").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
