@@ -145,6 +145,23 @@ button:hover{
     <p id="msg3"></p>
 </div>
 
+
+    <!-- PREGUNTA 4 -->
+<div id="pregunta4" class="hidden">
+    <h2>♾️ Cuarta prueba</h2>
+    <p>¿Cuál es el símbolo que representa algo que no termina nunca?</p>
+
+    <p style="font-size:60px; margin:20px 0;">∞</p>
+
+    <button onclick="incorrecta(this,'msg4')">0</button>
+    <button onclick="incorrecta(this,'msg4')">6</button>
+    <button onclick="correcta4(this)">8</button>
+    <button onclick="incorrecta(this,'msg4')">9</button>
+
+    <p id="msg4"></p>
+</div>
+
+    
 <!-- FINAL -->
 <div id="final" class="hidden">
 <h2 class="pop">🎁 Muy bien</h2>
@@ -210,6 +227,17 @@ function correcta3(btn){
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
+
+    function correcta4(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("6378 XX XXX");
+    setTimeout(()=>{
+        document.getElementById("pregunta4").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+    },400);
+}
+
 </script>
 
 <div id="telefono" class="telefono"> XXX XXX XXX </div>
