@@ -1,192 +1,51 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti ❤️</title>
-
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#a8d8ff,#d6ecff);
-    color:#1b2a41;
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.card{
-    max-width:700px;
-    padding:30px;
-}
-
-h1{
-    font-size:42px;
-}
-
-h2{
-    font-size:34px;
-}
-
-p{
-    font-size:24px;
-    line-height:1.5;
-}
-
-button{
-    padding:15px 25px;
-    font-size:22px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    margin:10px;
-    background:white;
-    color:#1b2a41;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.05);
-}
-
-.hidden{
-    display:none;
-}
-
-.telefono{
-    margin-top:25px;
-    font-size:32px;
-    font-weight:bold;
-    color:#355c7d;
-}
-
-.shake{
-    animation:shake .4s;
-}
-
-@keyframes shake{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-10px);}
-    50%{transform:translateX(10px);}
-    75%{transform:translateX(-10px);}
-    100%{transform:translateX(0);}
-}
-
-.pop{
-    animation:pop .4s ease;
-}
-
-@keyframes pop{
-    0%{
-        transform:scale(.8);
-        opacity:0;
-    }
-    100%{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-    <!-- INICIO -->
-    <div id="inicio">
-        <h1>❤️ Para ti ❤️</h1>
-
-        <p>
-            He preparado un pequeño juego.
-        </p>
-
-        <p>
-            Cada prueba superada revelará una parte de mi número.
-        </p>
-
-        <div class="telefono">
-            XXX XXX XXX
-        </div>
-
-        <button onclick="irPregunta1()">
-            Empezar
-        </button>
-    </div>
-
-    <!-- PREGUNTA 1 -->
-    <div id="pregunta1" class="hidden">
-
-        <h2>🎂 Primera prueba</h2>
-
-        <p>
-            ¿En qué mes cumplo años?
-        </p>
-
-        <div class="telefono">
-            XXX XXX XXX
-        </div>
-
-        <button onclick="incorrecta(this,'msg1')">Enero</button>
-        <button onclick="incorrecta(this,'msg1')">Marzo</button>
-        <button onclick="correcta1(this)">Junio</button>
-        <button onclick="incorrecta(this,'msg1')">Septiembre</button>
-
-        <p id="msg1"></p>
-
-    </div>
-
-    <!-- PREGUNTA 2 -->
-    <div id="pregunta2" class="hidden">
-
-        <h2>⭐ Segunda prueba</h2>
-
-        <p>
-            ¿Cuántas estrellas forman el Triángulo de Verano?
-        </p>
-
-        <div class="telefono">
-            6XX XXX XXX
-        </div>
-
-        <button onclick="incorrecta(this,'msg2')">2</button>
-        <button onclick="correcta2(this)">3</button>
-        <button onclick="incorrecta(this,'msg2')">4</button>
-        <button onclick="incorrecta(this,'msg2')">5</button>
-
-        <p id="msg2"></p>
-
-    </div>
-
-    <!-- FINAL -->
-    <div id="final" class="hidden">
-
-        <h2 class="pop">🎁 Muy bien</h2>
-
-        <p>
-            Has llegado hasta aquí.
-        </p>
-
-        <p>
-            Ya has descubierto una parte importante:
-        </p>
-
-        <div class="telefono">
-            67X XXX XXX
-        </div>
-
-        <p>
-            Todavía quedan algunas pruebas para descubrir el resto... 😉
-        </p>
-
-    </div>
-
-</div>
-
 <script>
+
+function lanzarConfeti(){
+
+    confetti({
+        particleCount: 80,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0 }
+    });
+
+    confetti({
+        particleCount: 80,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1 }
+    });
+
+}
+
+function lluviaFinal(){
+
+    const duration = 2500;
+    const end = Date.now() + duration;
+
+    (function frame(){
+
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if(Date.now() < end){
+            requestAnimationFrame(frame);
+        }
+
+    })();
+
+}
 
 function irPregunta1(){
 
@@ -212,6 +71,8 @@ function correcta1(btn){
 
     btn.classList.add("pop");
 
+    lanzarConfeti();
+
     setTimeout(()=>{
 
         document.getElementById("pregunta1").classList.add("hidden");
@@ -225,6 +86,8 @@ function correcta2(btn){
 
     btn.classList.add("pop");
 
+    lluviaFinal();
+
     setTimeout(()=>{
 
         document.getElementById("pregunta2").classList.add("hidden");
@@ -235,6 +98,3 @@ function correcta2(btn){
 }
 
 </script>
-
-</body>
-</html>
