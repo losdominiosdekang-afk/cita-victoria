@@ -119,6 +119,25 @@ button:hover{
 <p id="msg2"></p>
 </div>
 
+<!-- PREGUNTA 3 -->
+<div id="pregunta3" class="hidden">
+    <h2>🏛️ Tercera prueba</h2>
+    <p>Esto es Petra, en Jordania. Es una de las maravillas del mundo…</p>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Al_Khazneh.jpg/640px-Al_Khazneh.jpg" 
+         alt="Petra" 
+         style="width:90%; border-radius:15px; margin:20px 0;">
+
+    <p>Pero… ¿cuántas maravillas del mundo son?</p>
+
+    <button onclick="incorrecta(this,'msg3')">5</button>
+    <button onclick="incorrecta(this,'msg3')">6</button>
+    <button onclick="correcta3(this)">7</button>
+    <button onclick="incorrecta(this,'msg3')">8</button>
+
+    <p id="msg3"></p>
+</div>
+
 <!-- FINAL -->
 <div id="final" class="hidden">
 <h2 class="pop">🎁 Muy bien</h2>
@@ -171,6 +190,16 @@ function correcta2(btn){
     actualizarTelefono("63X XXX XXX");
     setTimeout(()=>{
         document.getElementById("pregunta2").classList.add("hidden");
+        document.getElementById("pregunta3").classList.remove("hidden");
+    },400);
+}
+
+function correcta3(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("637 XXX XXX");
+    setTimeout(()=>{
+        document.getElementById("pregunta3").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
