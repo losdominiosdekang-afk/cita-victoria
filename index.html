@@ -16,16 +16,30 @@ body{
     justify-content:center;
     align-items:center;
     text-align:center;
+    font-size:20px;
 }
 
 .card{
-    max-width:600px;
+    max-width:650px;
     padding:30px;
+}
+
+h1{
+    font-size:42px;
+}
+
+h2{
+    font-size:34px;
+}
+
+p{
+    font-size:22px;
+    line-height:1.5;
 }
 
 button{
     padding:15px 25px;
-    font-size:18px;
+    font-size:20px;
     border:none;
     border-radius:10px;
     cursor:pointer;
@@ -51,36 +65,48 @@ button:hover{
 
     <!-- PANTALLA 1 -->
     <div id="p1">
-        <h1>❤️ Gracias por la cita de hoy ❤️</h1>
-        <p>Tengo una pregunta para ti...</p>
-
-        <button onclick="showQuestion()">
-            Empezar
-        </button>
+        <h1>❤️ Para ti ❤️</h1>
+        <p>He preparado un pequeño juego...</p>
+        <button onclick="showQuestion()">Empezar</button>
     </div>
 
-    <!-- PANTALLA 2: PREGUNTA -->
+    <!-- PANTALLA 2 -->
     <div id="p2" class="hidden">
-        <h2>💭 Pregunta</h2>
-        <p>¿Dónde prefieres perderte conmigo?</p>
+        <h2>💭 Primera pista</h2>
+        <p>¿Dónde te gustaría perderte conmigo?</p>
 
-        <button onclick="wrongAnswer()">
-            Cartagena
-        </button>
-
-        <button onclick="correctAnswer()">
-            Murcia
-        </button>
+        <button onclick="wrong()">Cartagena</button>
+        <button onclick="correct()">Murcia</button>
 
         <p id="msg"></p>
     </div>
 
-    <!-- PANTALLA 3: FINAL -->
-    <div id="final" class="hidden">
-        <h2>💙</h2>
+    <!-- PANTALLA 3 -->
+    <div id="p3" class="hidden">
+        <h2>💙 Bien hecho</h2>
         <p>
-            Buena elección...  
-            esto solo acaba de empezar.
+            Has pasado la primera prueba...
+            pero ahora viene lo importante.
+        </p>
+
+        <button onclick="final()">Continuar</button>
+    </div>
+
+    <!-- FINAL -->
+    <div id="final" class="hidden">
+        <h2>🎁 Premio desbloqueado</h2>
+        <p>
+            Has llegado hasta el final del juego.
+        </p>
+
+        <p>
+            Este es mi número de teléfono:
+        </p>
+
+        <h2>📱 +34 XXX XXX XXX</h2>
+
+        <p>
+            Guárdalo... y úsalo bien 😉
         </p>
     </div>
 
@@ -93,14 +119,19 @@ function showQuestion(){
     document.getElementById("p2").classList.remove("hidden");
 }
 
-function correctAnswer(){
+function correct(){
     document.getElementById("p2").classList.add("hidden");
-    document.getElementById("final").classList.remove("hidden");
+    document.getElementById("p3").classList.remove("hidden");
 }
 
-function wrongAnswer(){
+function wrong(){
     document.getElementById("msg").innerText =
-    "Hmm… no estoy seguro de esa respuesta 😏 prueba otra";
+    "Mmm… no es esa la respuesta correcta 😏";
+}
+
+function final(){
+    document.getElementById("p3").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
 }
 
 </script>
