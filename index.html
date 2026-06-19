@@ -315,11 +315,10 @@ function correcta4(btn){
         document.getElementById("pregunta5").classList.remove("hidden");
     },400);
 }
-
 function correcta5(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("637815 XXX");
+    actualizarTelefono("637 81X XXX");
     setTimeout(()=>{
         document.getElementById("pregunta5").classList.add("hidden");
         document.getElementById("pregunta6").classList.remove("hidden");
@@ -329,29 +328,38 @@ function correcta5(btn){
 function correcta6(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("6378155XX");
+    actualizarTelefono("637 815 XXX");
     setTimeout(()=>{
         document.getElementById("pregunta6").classList.add("hidden");
         document.getElementById("pregunta7").classList.remove("hidden");
     },400);
 }
-
-    function correcta7(btn){
+function correcta7(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("63781556X");
+    actualizarTelefono("637 81 56 XX");
     setTimeout(()=>{
         document.getElementById("pregunta7").classList.add("hidden");
-        document.getElementById("final").classList.remove("hidden");
+        document.getElementById("pregunta8").classList.remove("hidden");
     },400);
 }
 
-    function correcta8(btn){
+function correcta8(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("637815560");
+    actualizarTelefono("637 81 56 0X");
     setTimeout(()=>{
         document.getElementById("pregunta8").classList.add("hidden");
+        document.getElementById("pregunta9").classList.remove("hidden");
+    },400);
+}
+
+function correcta9(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("637 81 56 09");
+    setTimeout(()=>{
+        document.getElementById("pregunta9").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
