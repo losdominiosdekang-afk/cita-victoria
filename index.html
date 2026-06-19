@@ -197,6 +197,22 @@ button:hover{
     <p id="msg6"></p>
 </div>
 
+    <!-- PREGUNTA 7 -->
+<div id="pregunta7" class="hidden">
+    <h2>📅 Séptima prueba</h2>
+
+    <p>
+        ¿Cuál fue el día de este mes en el que empezaste a despotricar sin miedo?
+    </p>
+
+    <button onclick="incorrecta(this,'msg7')">1</button>
+    <button onclick="correcta7(this)">6</button>
+    <button onclick="incorrecta(this,'msg7')">10</button>
+    <button onclick="incorrecta(this,'msg7')">20</button>
+
+    <p id="msg7"></p>
+</div>
+
     
 
     
@@ -286,12 +302,22 @@ function correcta5(btn){
     },400);
 }
 
-    function correcta6(btn){
+function correcta6(btn){
     btn.classList.add("pop");
     lanzarConfeti();
     actualizarTelefono("6378155XX");
     setTimeout(()=>{
         document.getElementById("pregunta6").classList.add("hidden");
+        document.getElementById("pregunta7").classList.remove("hidden");
+    },400);
+}
+
+    function correcta7(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("63781556X");
+    setTimeout(()=>{
+        document.getElementById("pregunta7").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
