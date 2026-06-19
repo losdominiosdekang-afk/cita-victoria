@@ -237,6 +237,22 @@ button:hover{
     <p id="msg8"></p>
 </div>
 
+    <!-- PREGUNTA 9 -->
+<div id="pregunta9" class="hidden">
+    <h2>🎯 Novena prueba</h2>
+
+    <p>
+        Pregunta provisional: ¿cuál de estos números es el mayor?
+    </p>
+
+    <button onclick="incorrecta(this,'msg9')">6</button>
+    <button onclick="incorrecta(this,'msg9')">7</button>
+    <button onclick="incorrecta(this,'msg9')">8</button>
+    <button onclick="correcta9(this)">9</button>
+
+    <p id="msg9"></p>
+</div>
+
     
 
     
@@ -363,7 +379,6 @@ function correcta9(btn){
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
-
 </script>
 
 <div id="telefono" class="telefono"> XXX XXX XXX </div>
