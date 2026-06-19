@@ -213,6 +213,30 @@ button:hover{
     <p id="msg7"></p>
 </div>
 
+    <!-- PREGUNTA 8 -->
+<div id="pregunta8" class="hidden">
+    <h2>🧮 Octava prueba</h2>
+
+    <p>
+        Observa atentamente la calculadora.
+    </p>
+
+    <img src="TU_IMAGEN_CALCULADORA.jpg"
+         alt="Calculadora"
+         style="width:70%; border-radius:15px; margin:20px 0;">
+
+    <p>
+        ¿Cuál es el número que se encuentra solito?
+    </p>
+
+    <button onclick="correcta8(this)">0</button>
+    <button onclick="incorrecta(this,'msg8')">2</button>
+    <button onclick="incorrecta(this,'msg8')">5</button>
+    <button onclick="incorrecta(this,'msg8')">8</button>
+
+    <p id="msg8"></p>
+</div>
+
     
 
     
@@ -318,6 +342,16 @@ function correcta6(btn){
     actualizarTelefono("63781556X");
     setTimeout(()=>{
         document.getElementById("pregunta7").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+    },400);
+}
+
+    function correcta8(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("637815560");
+    setTimeout(()=>{
+        document.getElementById("pregunta8").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
