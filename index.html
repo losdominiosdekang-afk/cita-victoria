@@ -177,6 +177,28 @@ button:hover{
     <p id="msg5"></p>
 </div>
 
+    <!-- PREGUNTA 6 -->
+<div id="pregunta6" class="hidden">
+    <h2>🌟 Sexta prueba</h2>
+
+    <p>
+        Para disfrutar de una buena experiencia hay que utilizar todos los sentidos.
+    </p>
+
+    <p>
+        ¿Cuántos sentidos solemos considerar que tiene una persona?
+    </p>
+
+    <button onclick="incorrecta(this,'msg6')">2</button>
+    <button onclick="incorrecta(this,'msg6')">3</button>
+    <button onclick="incorrecta(this,'msg6')">4</button>
+    <button onclick="correcta6(this)">5</button>
+
+    <p id="msg6"></p>
+</div>
+
+    
+
     
 <!-- FINAL -->
 <div id="final" class="hidden">
@@ -254,12 +276,22 @@ function correcta4(btn){
     },400);
 }
 
-    function correcta5(btn){
+function correcta5(btn){
     btn.classList.add("pop");
     lanzarConfeti();
-    actualizarTelefono("63781 XXX");
+    actualizarTelefono("637815 XXX");
     setTimeout(()=>{
         document.getElementById("pregunta5").classList.add("hidden");
+        document.getElementById("pregunta6").classList.remove("hidden");
+    },400);
+}
+
+    function correcta6(btn){
+    btn.classList.add("pop");
+    lanzarConfeti();
+    actualizarTelefono("6378155XX");
+    setTimeout(()=>{
+        document.getElementById("pregunta6").classList.add("hidden");
         document.getElementById("final").classList.remove("hidden");
     },400);
 }
